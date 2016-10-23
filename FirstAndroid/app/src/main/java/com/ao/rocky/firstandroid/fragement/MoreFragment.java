@@ -18,7 +18,7 @@ public class MoreFragment extends Fragment{
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = View.inflate(container.getContext(), R.layout.fragmentMore,null);
+		View view = View.inflate(container.getContext(), R.layout.fragment_more,null);
 
 		return view;
 	}
