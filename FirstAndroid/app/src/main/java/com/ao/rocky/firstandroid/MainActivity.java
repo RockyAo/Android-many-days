@@ -11,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ao.rocky.firstandroid.fragement.HomeFragment;
+import com.ao.rocky.firstandroid.fragement.InvestFragment;
+import com.ao.rocky.firstandroid.fragement.MeFragment;
+import com.ao.rocky.firstandroid.fragement.MoreFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,30 +49,38 @@ public class MainActivity extends FragmentActivity {
 	LinearLayout llMore;
 	@BindView(R.id.activity_main)
 	LinearLayout activityMain;
+
+
 	private HomeFragment homeFragment;
+	private InvestFragment investFragment;
+	private MeFragment meFragment;
+	private MoreFragment moreFragment;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
+		setSelect(0);
 	}
-
-
 
 	@OnClick({R.id.ll_home,R.id.ll_me,R.id.ll_invest,R.id.ll_more})
 	public void tabClick(View view){
-
 		switch (view.getId()){
 
 			case R.id.ll_home:
+
 				setSelect(0);
 				break;
 			case R.id.ll_invest:
+				setSelect(1);
 				break;
 			case R.id.ll_me:
+				setSelect(2);
 				break;
 			case R.id.ll_more:
+				setSelect(3);
 				break;
 
 		}
@@ -80,28 +91,93 @@ public class MainActivity extends FragmentActivity {
 
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
-
+		hideFragment(ft);
+		resetTabbar();
 		switch (i){
 
 			case 0:
 				//首页
+
 				if (homeFragment == null){
 					homeFragment = new HomeFragment();
 					ft.add(R.id.content,homeFragment);
 				}
 				ft.show(homeFragment);
+				setTabBarSelected(ivHome,tvHome,R.drawable.bid01);
+
 				break;
 			case 1:
 				//投资
+				if (investFragment == null){
+					investFragment = new InvestFragment();
+					ft.add(R.id.content,investFragment);
+				}
+				ft.show(investFragment);
+				setTabBarSelected(ivInvest,tvInvest,R.drawable.bid03);
 				break;
 			case 2:
 				//我的
+				if (meFragment == null){
+					meFragment = new MeFragment();
+					ft.add(R.id.content,meFragment);
+				}
+				ft.show(meFragment);
+				setTabBarSelected(ivMe,tvMe,R.drawable.bid05);
 				break;
 			case 3:
 				//更多
+				if (moreFragment == null){
+					moreFragment = new MoreFragment();
+					ft.add(R.id.content,moreFragment);
+				}
+				ft.show(moreFragment);
+				setTabBarSelected(ivMore,tvMore,R.drawable.bid07);
 				break;
 		}
 
 		ft.commit();
 	}
+
+	private void setTabBarSelected(ImageView view, TextView textView,int image) {
+
+		view.setImageResource(image);
+		textView.setTextColor(getResources().getColor(R.color.home_back_selected));
+	}
+
+	private void resetTabbar() {
+
+		ivHome.setImageResource(R.drawable.bid02);
+		ivInvest.setImageResource(R.drawable.bid04);
+		ivMe.setImageResource(R.drawable.bid06);
+		ivMore.setImageResource(R.drawable.bid08);
+
+		tvHome.setTextColor(getResources().getColor(R.color.home_back_unselected));
+		tvInvest.setTextColor(getResources().getColor(R.color.home_back_unselected));
+		tvMe.setTextColor(getResources().getColor(R.color.home_back_unselected));
+		tvMore.setTextColor(getResources().getColor(R.color.home_back_unselected));
+	}
+
+	private void hideFragment(FragmentTransaction ft) {
+
+		if (homeFragment != null){
+
+			ft.hide(homeFragment);
+		}
+
+		if (investFragment != null){
+			ft.hide(investFragment);
+		}
+
+		if (meFragment != null){
+
+			ft.hide(meFragment);
+		}
+
+		if (moreFragment != null){
+
+			ft.hide(moreFragment);
+		}
+	}
+
+
 }

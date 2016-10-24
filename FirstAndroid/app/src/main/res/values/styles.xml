@@ -7,12 +7,12 @@
 
 
     <!--自定义viewpagerIndicator样式-->
-    <style name="StyledIndicators" parent="@android:style/Theme.Light">
-        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
+    <!--<style name="StyledIndicators" parent="@android:style/Theme.Light">-->
+        <!--<item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+    <!--</style>-->
 
-    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+    <style name="CustomTabPageIndicator" parent="AppTheme">
         <item name="android:background">@drawable/tab_indicator</item>
         <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
         <item name="android:textSize">14sp</item>
