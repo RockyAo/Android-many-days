@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ao.rocky.firstandroid.Utils.UIUtils;
 import com.ao.rocky.firstandroid.fragement.HomeFragment;
 import com.ao.rocky.firstandroid.fragement.InvestFragment;
 import com.ao.rocky.firstandroid.fragement.MeFragment;
@@ -49,14 +50,7 @@ public class MainActivity extends FragmentActivity {
 	LinearLayout llMore;
 	@BindView(R.id.activity_main)
 	LinearLayout activityMain;
-	@BindView(R.id.common_top)
-	LinearLayout commonTop;
-	@BindView(R.id.title_left)
-	ImageView titleLeft;
-	@BindView(R.id.title_right)
-	ImageView titleRight;
-	@BindView(R.id.top_title)
-	TextView topTitle;
+
 
 	private HomeFragment homeFragment;
 	private InvestFragment investFragment;
@@ -107,7 +101,7 @@ public class MainActivity extends FragmentActivity {
 				//首页
 
 				if (homeFragment == null){
-					homeFragment = new HomeFragment(titleLeft);
+					homeFragment = new HomeFragment();
 					ft.add(R.id.content,homeFragment);
 				}
 				ft.show(homeFragment);
@@ -148,8 +142,8 @@ public class MainActivity extends FragmentActivity {
 	private void setTabBarSelected(ImageView view, TextView textView,int image,String title) {
 
 		view.setImageResource(image);
-		textView.setTextColor(getResources().getColor(R.color.home_back_selected));
-		topTitle.setText(title);
+		textView.setTextColor(UIUtils.getColorById(R.color.home_back_selected));
+
 	}
 
 	private void resetTabbar() {
@@ -159,10 +153,10 @@ public class MainActivity extends FragmentActivity {
 		ivMe.setImageResource(R.drawable.bid06);
 		ivMore.setImageResource(R.drawable.bid08);
 
-		tvHome.setTextColor(getResources().getColor(R.color.home_back_unselected));
-		tvInvest.setTextColor(getResources().getColor(R.color.home_back_unselected));
-		tvMe.setTextColor(getResources().getColor(R.color.home_back_unselected));
-		tvMore.setTextColor(getResources().getColor(R.color.home_back_unselected));
+		tvHome.setTextColor(UIUtils.getColorById(R.color.home_back_unselected));
+		tvInvest.setTextColor(UIUtils.getColorById(R.color.home_back_unselected));
+		tvMe.setTextColor(UIUtils.getColorById(R.color.home_back_unselected));
+		tvMore.setTextColor(UIUtils.getColorById(R.color.home_back_unselected));
 	}
 
 	private void hideFragment(FragmentTransaction ft) {
