@@ -49,7 +49,14 @@ public class MainActivity extends FragmentActivity {
 	LinearLayout llMore;
 	@BindView(R.id.activity_main)
 	LinearLayout activityMain;
-
+	@BindView(R.id.common_top)
+	LinearLayout commonTop;
+	@BindView(R.id.title_left)
+	ImageView titleLeft;
+	@BindView(R.id.title_right)
+	ImageView titleRight;
+	@BindView(R.id.top_title)
+	TextView topTitle;
 
 	private HomeFragment homeFragment;
 	private InvestFragment investFragment;
@@ -62,6 +69,7 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
+
 		setSelect(0);
 	}
 
@@ -99,12 +107,11 @@ public class MainActivity extends FragmentActivity {
 				//首页
 
 				if (homeFragment == null){
-					homeFragment = new HomeFragment();
+					homeFragment = new HomeFragment(titleLeft);
 					ft.add(R.id.content,homeFragment);
 				}
 				ft.show(homeFragment);
-				setTabBarSelected(ivHome,tvHome,R.drawable.bid01);
-
+				setTabBarSelected(ivHome,tvHome,R.drawable.bid01,"首页");
 				break;
 			case 1:
 				//投资
@@ -113,7 +120,7 @@ public class MainActivity extends FragmentActivity {
 					ft.add(R.id.content,investFragment);
 				}
 				ft.show(investFragment);
-				setTabBarSelected(ivInvest,tvInvest,R.drawable.bid03);
+				setTabBarSelected(ivInvest,tvInvest,R.drawable.bid03,"我要投资");
 				break;
 			case 2:
 				//我的
@@ -122,7 +129,7 @@ public class MainActivity extends FragmentActivity {
 					ft.add(R.id.content,meFragment);
 				}
 				ft.show(meFragment);
-				setTabBarSelected(ivMe,tvMe,R.drawable.bid05);
+				setTabBarSelected(ivMe,tvMe,R.drawable.bid05,"我的资产");
 				break;
 			case 3:
 				//更多
@@ -131,17 +138,18 @@ public class MainActivity extends FragmentActivity {
 					ft.add(R.id.content,moreFragment);
 				}
 				ft.show(moreFragment);
-				setTabBarSelected(ivMore,tvMore,R.drawable.bid07);
+				setTabBarSelected(ivMore,tvMore,R.drawable.bid07,"更多");
 				break;
 		}
 
 		ft.commit();
 	}
 
-	private void setTabBarSelected(ImageView view, TextView textView,int image) {
+	private void setTabBarSelected(ImageView view, TextView textView,int image,String title) {
 
 		view.setImageResource(image);
 		textView.setTextColor(getResources().getColor(R.color.home_back_selected));
+		topTitle.setText(title);
 	}
 
 	private void resetTabbar() {

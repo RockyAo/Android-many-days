@@ -7,6 +7,8 @@
     android:orientation="vertical"
     >
 
+    <include layout="@layout/commont_top"/>
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"

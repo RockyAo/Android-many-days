@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.ao.rocky.firstandroid.R;
 
@@ -14,13 +15,20 @@ import com.ao.rocky.firstandroid.R;
  */
 
 public class HomeFragment extends Fragment{
-
+	private ImageView image_left ;
+	public HomeFragment(){
+		super();
+	}
+	public HomeFragment(ImageView imageView){
+		this.image_left = imageView ;
+	}
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 	 	View view = View.inflate(container.getContext(), R.layout.fragment_home,null);
 
+		image_left.setVisibility(View.GONE);
 		return view;
 	}
 }
