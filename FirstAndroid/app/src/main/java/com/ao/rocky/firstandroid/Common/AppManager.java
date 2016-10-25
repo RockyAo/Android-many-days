@@ -14,7 +14,7 @@ public class AppManager {
 
 	public static AppManager appManager = null;
 
-	private AppManager{
+	private AppManager(){
 
 
 	}
