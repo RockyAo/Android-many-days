@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ao.rocky.firstandroid.Common.AppManager;
 import com.ao.rocky.firstandroid.Utils.UIUtils;
 import com.ao.rocky.firstandroid.fragement.HomeFragment;
 import com.ao.rocky.firstandroid.fragement.InvestFragment;
@@ -63,7 +64,7 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
-
+		AppManager.manager().addActivity(this);
 		setSelect(0);
 	}
 
