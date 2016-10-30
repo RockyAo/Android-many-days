@@ -66,7 +66,10 @@ public class MainActivity extends FragmentActivity {
 		ButterKnife.bind(this);
 		AppManager.manager().addActivity(this);
 		setSelect(0);
+
 	}
+
+
 
 	@OnClick({R.id.ll_home,R.id.ll_me,R.id.ll_invest,R.id.ll_more})
 	public void tabClick(View view){
