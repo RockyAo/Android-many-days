@@ -109,7 +109,7 @@ public class SpringScrollView extends ScrollView {
 
 		TranslateAnimation ta = new TranslateAnimation(0, 0, 0, originalPosition.top-innerView.getTop());
 
-		ta.setDuration(200);
+		ta.setDuration(250);
 		ta.setAnimationListener(new Animation.AnimationListener(){
 
 			@Override
